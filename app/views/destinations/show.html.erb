@@ -1,5 +1,21 @@
 <h1>Destinations#show</h1>
-<p><%= @destination.name%> , <%= @destination.country %></p>
-<% @destination.most_recent_posts.each do |post| %>
-<%= post.title %><br></br>
-<% end %>
+
+<h3>The Five Most Recent Posts About This Destination:</h3>
+    <p><%= @destination.name%> , <%= @destination.country %></p>
+    <% @destination.most_recent_posts.each do |post| %>
+    <%= post.title %><br></br>
+    <% end %>
+
+<h3>The Destination's Post with the Most Likes:</h3>
+  <% if !@destination.posts.empty? %>
+    <%=@destination.most_liked_post[0].title %>
+    <%else%>
+    No available posts.
+    <%end %>
+
+<h3>The Average Age of all unique bloggers who have written about this destination.</h3>
+  <% if !@destination.posts.empty? %>
+    <%=@destination.average_age_of_bloggers %>
+    <%else%>
+    No bloggers.
+  <%end%> 

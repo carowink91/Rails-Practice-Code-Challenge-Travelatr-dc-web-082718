@@ -14,6 +14,9 @@ class Blogger < ApplicationRecord
     total
   end
 
-  
+  def most_liked_post
+    self.posts.order("likes desc").limit(1)
+  end
+
 
 end
