@@ -1,0 +1,5 @@
+<h1>Destinations#show</h1>
+<p><%= @destination.name%> , <%= @destination.country %></p>
+<% @destination.most_recent_posts.each do |post| %>
+<%= post.title %><br></br>
+<% end %>
