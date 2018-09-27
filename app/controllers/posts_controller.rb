@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    byebug
+byebug
     @post = Post.create(post_params)
       if @post.errors
         render :new
@@ -35,9 +35,17 @@ class PostsController < ApplicationController
       end
   end
 
+  def like
+    @post = Post.find(params[:id])
+    @post.likes += 1
+    @post.save
+
+    redirect_to post_path(@post)
+  end
+
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :likes, :blogger_id, :destination_id)
+    params.require(:post).permit(:title, :content, :likes, :blogger_id, :destination_id, destination_attributes:[:name, :country])
   end
 end

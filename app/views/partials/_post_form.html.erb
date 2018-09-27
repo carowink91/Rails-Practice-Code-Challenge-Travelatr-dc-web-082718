@@ -7,7 +7,16 @@
   <%= f.label :content %>
   <%= f.text_area :content %>
 
-  <%= f.collection_select :blogger_id, Blogger.all, :id, :name%>
+  Blogger:
+  <%= f.collection_select :blogger_id, Blogger.all, :id, :name%><br></br>
+  Destination:
+  <%= f.collection_select :destination_id, Destination.all, :id, :name%>
+
+  <%= f.fields_for :destination do |destination_form| %>
+    Name:<%= destination_form.text_field :name %><br></br>
+    Country:<%= destination_form.text_field :country %>
+  <% end %>
 
   <%= f.submit %>
+  
 <%end%>
